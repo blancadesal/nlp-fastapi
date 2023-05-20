@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: ./.env
+    command: gunicorn app.main:app -k uvicorn.workers.UvicornWorker --workers=4 --timeout=60 --preload --bind 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    # restart: unless-stopped
+    volumes:
+      - ./NLP_resources:/code/NLP_resources
+
