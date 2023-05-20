@@ -10,10 +10,10 @@ fi
 cd $PROJECT_DIR
 git pull
 
-# Check if .env file exists, if not generate it
-# if [ ! -f "$PROJECT_DIR/.env" ]; then
-#     "$PROJECT_DIR/deploy/generate-env.sh"
-# fi
+Check if .env file exists, if not generate it
+if [ ! -f "$PROJECT_DIR/.env" ]; then
+    "$PROJECT_DIR/deploy/generate-env.sh"
+fi
 
 if [ "$(docker compose -f $PROJECT_DIR/docker-compose.yml ps -q)" ]; then
     docker compose -f $PROJECT_DIR/docker-compose.yml down -v
@@ -23,14 +23,14 @@ docker compose -f $PROJECT_DIR/docker-compose.yml build
 docker compose -f $PROJECT_DIR/docker-compose.yml up -d
 
 
-# if [ ! -e /etc/nginx/sites-available/wikitech-search.wmcloud.org ] || \
-#    ! cmp -s ./deploy/nginx.conf /etc/nginx/sites-available/wikitech-search.wmcloud.org
-# then
-#     sudo cp ./deploy/nginx.conf /etc/nginx/sites-available/wikitech-search.wmcloud.org
+if [ ! -e /etc/nginx/sites-available/search-wikitech.wmcloud.org ] || \
+   ! cmp -s ./deploy/nginx.conf /etc/nginx/sites-available/search-wikitech.wmcloud.org
+then
+    sudo cp ./deploy/nginx.conf /etc/nginx/sites-available/search-wikitech.wmcloud.org
 
-#     if [ ! -e /etc/nginx/sites-enabled/wikitech-search.wmcloud.org ]; then
-#         sudo ln -s /etc/nginx/sites-available/wikitech-search.wmcloud.org /etc/nginx/sites-enabled/
-#     fi
+    if [ ! -e /etc/nginx/sites-enabled/search-wikitech.wmcloud.org ]; then
+        sudo ln -s /etc/nginx/sites-available/search-wikitech.wmcloud.org /etc/nginx/sites-enabled/
+    fi
 
-#     sudo systemctl restart nginx
-# fi
+    sudo systemctl restart nginx
+fi
