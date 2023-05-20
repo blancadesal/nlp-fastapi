@@ -33,8 +33,8 @@ class ModelManager:
         emb_dir=settings.emb_dir,
     ):
         if not hasattr(self, "initialized"):
-            self.index_path = "/code/app/all-mpnet-base-v2.faiss"
-            self.config_path = "/code/app/all-mpnet-base-v2.json"
+            self.index_path = emb_dir / "all-mpnet-base-v2.faiss"
+            self.config_path = emb_dir / "all-mpnet-base-v2.json"
             self.emb_model_name = emb_model_name
             self.qa_model_name = qa_model_name
             self.document_store = FAISSDocumentStore(faiss_index_path=self.index_path, faiss_config_path=self.config_path)

@@ -78,8 +78,8 @@ data/
 
 # models
 NLP_resources
+*.db
 
-.env.prod
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
