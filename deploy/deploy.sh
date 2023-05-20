@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECT_DIR="/home/sstefanova/nlp-blueprint"
+PROJECT_DIR="/home/sstefanova/nlp-fastapi"
 REPO_URL="https://github.com/blancadesal/nlp-fastapi.git"
 
 if [ ! -d "$PROJECT_DIR" ]; then
